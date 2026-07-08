@@ -30,7 +30,7 @@ export async function callOpenRouter(
       Authorization: `Bearer ${key}`,
       "HTTP-Referer":
         process.env.OPENROUTER_SITE_URL || "http://localhost:3000",
-      "X-Title": "Nova Voice Assistant",
+      "X-Title": "Omen Voice Assistant",
     },
     body: JSON.stringify({
       model,

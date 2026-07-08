@@ -1,4 +1,4 @@
-# 🎙️ Nova — AI Voice Assistant
+# 🎙️ Omen — AI Voice Assistant
 
 An Alexa-style, voice-first AI assistant built with **Next.js 15**. Talk to it,
 get concise spoken answers, and keep a private history of your conversations —

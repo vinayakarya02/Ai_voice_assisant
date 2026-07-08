@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SettingsForm } from "@/components/settings/SettingsForm";
 
 export const metadata: Metadata = {
-  title: "Settings — Nova",
+  title: "Settings — Omen",
   description: "Configure your AI provider, voice, speech, and theme.",
 };
 

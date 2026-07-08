@@ -11,7 +11,7 @@ import { Logo } from "@/components/Logo";
 import { APP_NAME, APP_TAGLINE } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "About — Nova",
+  title: "About — Omen",
   description: APP_TAGLINE,
 };
 
@@ -19,7 +19,7 @@ const FEATURES = [
   {
     icon: Mic,
     title: "Voice recognition",
-    body: "Push to talk with a live transcript. Nova auto-stops when you finish speaking.",
+    body: "Push to talk with a live transcript. Omen auto-stops when you finish speaking.",
   },
   {
     icon: Sparkles,
@@ -60,7 +60,7 @@ const STACK = [
 const STEPS = [
   "Tap the glowing microphone (or press the Space bar).",
   "Ask a question out loud — your words appear as you speak.",
-  "Nova thinks, replies on screen, and reads the answer aloud.",
+  "Omen thinks, replies on screen, and reads the answer aloud.",
   "Revisit, copy, regenerate, or export any conversation.",
 ];
 

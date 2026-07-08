@@ -24,7 +24,7 @@ export function Sidebar({ mobileOpen, onClose }: SidebarProps) {
   return (
     <>
       {/* Desktop: persistent column */}
-      <aside className="hidden lg:flex w-[272px] shrink-0 flex-col border-r hairline glass">
+      <aside className="relative z-10 hidden lg:flex w-[272px] shrink-0 flex-col border-r hairline glass">
         <SidebarContent onNavigate={() => {}} />
       </aside>
 
@@ -124,7 +124,7 @@ function SidebarContent({ onNavigate }: { onNavigate: () => void }) {
         </p>
         {conversations.length === 0 ? (
           <p className="px-2 text-sm text-muted">
-            No conversations yet. Start talking to Nova!
+            No conversations yet. Start talking to Omen!
           </p>
         ) : (
           <ul className="space-y-1">

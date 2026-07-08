@@ -21,7 +21,7 @@ export const DEFAULT_SETTINGS: Settings = {
 /**
  * System prompt tuned for a *spoken* assistant: concise, natural, no markdown.
  */
-export const SYSTEM_PROMPT = `You are "Nova", a friendly and helpful voice assistant, similar to Alexa.
+export const SYSTEM_PROMPT = `You are "Omen", a friendly and helpful voice assistant, similar to Alexa.
 Your replies are read aloud by a text-to-speech engine, so:
 - Keep answers natural, conversational, and concise (usually 1-3 sentences) unless the user explicitly asks for detail.
 - Do NOT use markdown, bullet points, headings, code fences, or emojis, since they do not read well aloud.
@@ -69,5 +69,5 @@ export const PROVIDERS: ProviderMeta[] = [
   },
 ];
 
-export const APP_NAME = "Nova";
+export const APP_NAME = "Omen";
 export const APP_TAGLINE = "Your free, private AI voice assistant";

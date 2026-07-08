@@ -74,6 +74,12 @@ export function MicButton({
         transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
       />
 
+      {/* Slowly rotating aurora ring hugging the button edge */}
+      <span
+        className="mic-aura absolute"
+        style={{ width: size * 1.16, height: size * 1.16 }}
+      />
+
       <motion.button
         type="button"
         onClick={onClick}

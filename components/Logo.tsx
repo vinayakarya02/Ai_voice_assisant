@@ -1,7 +1,7 @@
 import { cn } from "@/utils/cn";
 
 /**
- * The Nova brand mark: a gradient orb with three "audio" bars. Purely
+ * The Omen brand mark: a gradient orb with three "audio" bars. Purely
  * decorative, so it's hidden from assistive tech (the wordmark carries meaning).
  */
 export function Logo({
@@ -24,7 +24,7 @@ export function Logo({
         role="img"
       >
         <defs>
-          <linearGradient id="nova-grad" x1="0" y1="0" x2="1" y2="1">
+          <linearGradient id="omen-grad" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="#818cf8" />
             <stop offset="55%" stopColor="#6366f1" />
             <stop offset="100%" stopColor="#22d3ee" />
@@ -36,7 +36,7 @@ export function Logo({
           width="37"
           height="37"
           rx="12"
-          fill="url(#nova-grad)"
+          fill="url(#omen-grad)"
         />
         <g
           fill="#ffffff"

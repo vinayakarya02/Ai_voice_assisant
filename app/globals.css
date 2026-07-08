@@ -86,10 +86,27 @@
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, #a5b4fc 0%, #67e8f9 100%);
+    background: linear-gradient(
+      120deg,
+      #a5b4fc 0%,
+      #67e8f9 35%,
+      #c4b5fd 65%,
+      #a5b4fc 100%
+    );
+    background-size: 200% 100%;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    animation: gradient-pan 9s ease-in-out infinite;
+  }
+  @keyframes gradient-pan {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
   }
 
   /* Primary call-to-action gradient. */
@@ -148,5 +165,175 @@
   .light {
     --border: rgba(15, 23, 42, 0.3);
     --fg-muted: #333c52;
+  }
+}
+
+/* ==========================================================================
+   Animated ambient background (aurora orbs + faint grid).
+   Pure CSS so it is GPU-composited and costs no JS. The global
+   prefers-reduced-motion rule above freezes these animations automatically.
+   ========================================================================== */
+.bg-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  opacity: 0.4;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+.bg-orb-1 {
+  width: 42rem;
+  height: 42rem;
+  top: -14rem;
+  left: -10rem;
+  background: radial-gradient(circle at center, #6366f1, transparent 62%);
+  animation: orb-drift-1 22s ease-in-out infinite;
+}
+
+.bg-orb-2 {
+  width: 36rem;
+  height: 36rem;
+  right: -9rem;
+  bottom: -13rem;
+  background: radial-gradient(circle at center, #22d3ee, transparent 62%);
+  animation: orb-drift-2 27s ease-in-out infinite;
+}
+
+.bg-orb-3 {
+  width: 32rem;
+  height: 32rem;
+  top: 34%;
+  left: 42%;
+  opacity: 0.3;
+  background: radial-gradient(circle at center, #a855f7, transparent 62%);
+  animation: orb-drift-3 33s ease-in-out infinite;
+}
+
+/* Softer, non-additive orbs on the light theme so they read as gentle tints. */
+.light .bg-orb {
+  mix-blend-mode: normal;
+  opacity: 0.22;
+}
+.light .bg-orb-3 {
+  opacity: 0.16;
+}
+
+@keyframes orb-drift-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(6rem, 4rem) scale(1.12);
+  }
+}
+
+@keyframes orb-drift-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-5rem, -3.5rem) scale(1.1);
+  }
+}
+
+@keyframes orb-drift-3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-4rem, 3rem) scale(1.08);
+  }
+}
+
+/* Faint grid overlay, masked to fade out toward the edges for depth. */
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.028) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    #000 25%,
+    transparent 75%
+  );
+  mask-image: radial-gradient(ellipse at center, #000 25%, transparent 75%);
+}
+.light .bg-grid {
+  background-image: linear-gradient(
+      to right,
+      rgba(15, 23, 42, 0.04) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+}
+
+/* Floating particles that slowly rise and drift for gentle ambient life. */
+.particle {
+  position: absolute;
+  bottom: -12px;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    rgba(199, 210, 254, 0.9),
+    rgba(199, 210, 254, 0)
+  );
+  opacity: 0;
+  animation-name: particle-rise;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+.light .particle {
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.55),
+    rgba(99, 102, 241, 0)
+  );
+}
+@keyframes particle-rise {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.7;
+  }
+  85% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: translateY(-92vh) translateX(var(--drift, 0px));
+    opacity: 0;
+  }
+}
+
+/* Slowly rotating conic "aurora" halo used behind the microphone. */
+.mic-aura {
+  position: absolute;
+  border-radius: 9999px;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    rgba(129, 140, 248, 0.55) 18%,
+    transparent 38%,
+    rgba(34, 211, 238, 0.45) 58%,
+    transparent 78%,
+    rgba(168, 85, 247, 0.5) 100%
+  );
+  filter: blur(7px);
+  animation: spin-slow 9s linear infinite;
+}
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
   }
 }

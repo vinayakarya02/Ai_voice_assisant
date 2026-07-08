@@ -34,7 +34,7 @@ export function SettingsForm() {
 
   const testVoice = () => {
     speak(
-      "Hi, I'm Nova. This is how I'll sound when I read a response aloud.",
+      "Hi, I'm Omen. This is how I'll sound when I read a response aloud.",
       {
         voiceURI: settings.voiceURI,
         gender: settings.voiceGender,
@@ -49,7 +49,7 @@ export function SettingsForm() {
       <header>
         <h1 className="text-2xl font-semibold tracking-tight">Settings</h1>
         <p className="mt-1 text-sm text-muted">
-          Personalize how Nova listens, speaks, and looks.
+          Personalize how Omen listens, speaks, and looks.
         </p>
       </header>
 
@@ -107,7 +107,7 @@ export function SettingsForm() {
           </Select>
         </SettingRow>
 
-        <SettingRow title="Speaking speed" description="How fast Nova talks.">
+        <SettingRow title="Speaking speed" description="How fast Omen talks.">
           <Slider
             label="Speaking speed"
             min={0.5}

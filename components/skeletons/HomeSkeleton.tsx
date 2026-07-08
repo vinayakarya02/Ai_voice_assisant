@@ -18,7 +18,7 @@ export function HomeSkeleton() {
           ))}
         </div>
       </div>
-      <span className="sr-only">Loading Nova…</span>
+      <span className="sr-only">Loading Omen…</span>
     </div>
   );
 }

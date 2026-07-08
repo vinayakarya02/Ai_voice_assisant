@@ -113,7 +113,13 @@ function Hero({ a }: { a: ReturnType<typeof useAssistant> }) {
   return (
     <div className="flex h-full flex-col overflow-y-auto">
       <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-4 py-12 text-center">
-        <MicButton status={a.status} onClick={a.toggleListening} size={132} />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          <MicButton status={a.status} onClick={a.toggleListening} size={132} />
+        </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 10 }}
@@ -155,16 +161,21 @@ function Hero({ a }: { a: ReturnType<typeof useAssistant> }) {
 
         {/* Suggestion chips */}
         <div className="mt-9 flex flex-wrap items-center justify-center gap-2.5">
-          {SUGGESTIONS.map((s) => (
-            <button
+          {SUGGESTIONS.map((s, i) => (
+            <motion.button
               key={s.label}
               type="button"
               onClick={() => a.sendMessage(s.prompt)}
-              className="glass inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 text-sm text-muted transition hover:text-[var(--fg)] hover:border-indigo-400/40"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.25 + i * 0.07, duration: 0.3 }}
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.97 }}
+              className="glass inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 text-sm text-muted transition-colors hover:text-[var(--fg)] hover:border-indigo-400/50"
             >
               <Sparkles className="h-3.5 w-3.5 text-indigo-300" />
               {s.label}
-            </button>
+            </motion.button>
           ))}
         </div>
 

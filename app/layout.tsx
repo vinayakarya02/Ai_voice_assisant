@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: `${APP_NAME} — AI Voice Assistant`,
   description: APP_TAGLINE,
   applicationName: APP_NAME,
-  authors: [{ name: "Nova Voice Assistant" }],
+  authors: [{ name: "Omen Voice Assistant" }],
   keywords: ["voice assistant", "AI", "speech recognition", "Next.js"],
 };
 
