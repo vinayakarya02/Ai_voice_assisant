@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   Theme tokens. Dark is the default; `.light` on <html> flips the palette.
+   ========================================================================== */
+@layer base {
+  :root {
+    color-scheme: dark;
+    --bg: #0a0a12;
+    --bg-2: #0f1020;
+    --panel: rgba(255, 255, 255, 0.04);
+    --panel-solid: #14152a;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-strong: rgba(255, 255, 255, 0.14);
+    --fg: #edeef5;
+    --fg-muted: #9aa0b5;
+    --glow: rgba(99, 102, 241, 0.45);
+    --glow-2: rgba(34, 211, 238, 0.12);
+  }
+
+  .light {
+    color-scheme: light;
+    --bg: #f5f6fb;
+    --bg-2: #eaeef7;
+    --panel: rgba(255, 255, 255, 0.7);
+    --panel-solid: #ffffff;
+    --border: rgba(15, 23, 42, 0.1);
+    --border-strong: rgba(15, 23, 42, 0.16);
+    --fg: #131427;
+    --fg-muted: #55607a;
+    --glow: rgba(79, 70, 229, 0.22);
+    --glow-2: rgba(8, 145, 178, 0.1);
+  }
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Consistent, subtle focus outline for keyboard users. */
+  :focus-visible {
+    outline: 2px solid #818cf8;
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+/* ==========================================================================
+   Reusable component classes.
+   ========================================================================== */
+@layer components {
+  .app-bg {
+    background:
+      radial-gradient(900px circle at 12% -10%, var(--glow), transparent 45%),
+      radial-gradient(760px circle at 100% 0%, var(--glow-2), transparent 42%),
+      var(--bg);
+  }
+
+  .glass {
+    background: var(--panel);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+  }
+
+  .panel {
+    background: var(--panel-solid);
+    border: 1px solid var(--border);
+  }
+
+  .hairline {
+    border-color: var(--border);
+  }
+
+  .text-muted {
+    color: var(--fg-muted);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #a5b4fc 0%, #67e8f9 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Primary call-to-action gradient. */
+  .btn-gradient {
+    background-image: linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #7c3aed 100%);
+  }
+}
+
+/* ==========================================================================
+   Utilities, scrollbars, and accessibility preferences.
+   ========================================================================== */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 152, 170, 0.35);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 152, 170, 0.55);
+  background-clip: content-box;
+}
+
+/* Respect users who prefer less motion — neutralize animations. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Boost contrast for users who request it. */
+@media (prefers-contrast: more) {
+  :root {
+    --border: rgba(255, 255, 255, 0.3);
+    --border-strong: rgba(255, 255, 255, 0.45);
+    --fg-muted: #cbd0df;
+  }
+  .light {
+    --border: rgba(15, 23, 42, 0.3);
+    --fg-muted: #333c52;
+  }
+}
