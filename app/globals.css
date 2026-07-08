@@ -337,3 +337,21 @@
     transform: rotate(360deg);
   }
 }
+
+/* Frosted, theme-aware top navigation bar. */
+.topbar {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.02)
+  );
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.light .topbar {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.85),
+    rgba(255, 255, 255, 0.6)
+  );
+}
